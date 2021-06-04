@@ -2,25 +2,81 @@
     <div class="col-md-4">
         <div class="card">
             <div class="card-body">
-                <h2>Formulario</h2>
+                <form #billForm="ngForm" (ngSubmit)="addBill(billForm)">
+
+                    <input type="hidden" name="_id" [(ngModel)]="billService.selectedBill._id">
+                        <div class="form-group">
+                            <input type="date" name="fecha" #name="ngModel" [(ngModel)]="billService.selectedBill.fecha"
+                            placeholder="Fecha" class="form-control">
+                        </div>
+            
+                        <div class="form-group">
+                        <div class="input-field col-s12">
+                            <input type="text" name="hora" #name="ngModel" [(ngModel)]="billService.selectedBill.hora"
+                            placeholder="Hora" class="form-control">
+                        </div>
+                        </div>
+            
+                        <div class="form-group">
+                        <input type="text" name="consumo" #name="ngModel" [(ngModel)]="billService.selectedBill.consumo"
+                            placeholder="Consumo" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                        <input type="text" name="precio" #name="ngModel" [(ngModel)]="billService.selectedBill.precio"
+                            placeholder="Precio" class="form-control">
+                        </div>
+            
+                        <div class="form-group">
+                            <input type="text" name="coste" #name="ngModel" [(ngModel)]="billService.selectedBill.coste"
+                            placeholder="Coste" class="form-control">
+                        </div>
+                    <button class="btn  btn-sm btn-success">
+                        Save data
+                    </button>
+                    <button class="btn  btn-sm btn-primary" (click)="resetForm(billForm)">
+                        Clean data
+                    </button>
+                </form>
             </div>
         </div>
     </div>
     <div class="col-md-8">
-        <table>
+        <form class="form-inline">
+            <input class="form-control m-2" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="userFilter" name="userFilter">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        <table class="table table-striped">
             <thead>
                 <tr>
                     <th>Fecha</th>
                     <th>Hora</th>
-                    <th>Consumo</th>
-                    <th>Precio</th>
-                    <th>Coste</th>
+                    <th>Consumo ( Wh )</th>
+                    <th>Precio ( €/kWh )</th>
+                    <th>Coste ( € )</th>
                     <th>Operaciones</th>
                 </tr>
             </thead>
             <tbody>
-                
+                <tr *ngFor="let bill of billService.bills | paginate: { itemsPerPage: 10, currentPage: page }">
+                    <td>{{ bill.fecha }}</td>
+                    <td>{{ bill.hora }}</td>
+                    <td>{{ bill.consumo }} ( Wh )</td>
+                    <td>{{ bill.precio }} ( €/kWh )</td>
+                    <td>{{ bill.coste }} ( € )</td>
+                    <td>
+                        <button (click)="updateFactura(factura)" class="btn btn-secondary btn-sm mr-2">
+                            <i class="fas fa-marker"></i>
+                        </button> 
+                        <button (click)="deleteFactura(factura._id, facturaForm)" class="btn btn-danger btn-sm">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </td>
+                   
+                </tr>
             </tbody>
         </table>
+        <pagination-controls  (pageChange)="page = $event"></pagination-controls>
     </div>
 </div>
+
