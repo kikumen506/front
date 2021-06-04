@@ -1,27 +1,14 @@
-# Front
+#Prueba tecnica del grupo Wellness Techgroup realizada por Enrique Pablo Gonzalez Garrido#
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.3.
+El resultado de la prueba esta dividido en dos carpetas, una para el servidor y otra para la interfaz grafica.
+El resultado se ha obtenido usando el stack tecnologico MEAN (Mongo DB, Express JS, Angular, NodeJS).
 
-## Development server
+Para que la prueba pueda funcionar correctamente es necesario tener instalado mongo en el equipo, ya que se ha desarrollado usando un servidor local de mongo, no un cluster. Asi mismo es necesario tener instalada la version ams reciente de Angular CLI, para evitar posibles fallos.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## BACK
+Al descargar el resultado es necesario instalar de nuevo la carpeta node_modules, haciendo uso del comando "npm install" dentro del directorio back, para que los modulos se intalen de nuevo.
+Para iniciar el servidor del proyecto es necesario ejecutar el comando "npm run dev" para inicar el servidor, y la conexion a la base de datos
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## FRONT 
+Al descargar el resultado es necesario instalar de nuevo la carpeta node_modules, haciendo uso del comando "npm install" dentro del directorio front, para que los modulos se intalen de nuevo.
+Para iniciar la interfaz de la prueba es necesario ejecutar el comando "ng serve".
