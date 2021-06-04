@@ -32,11 +32,11 @@ export class BillService {
         return this.http.post( environment.URI_API, bill)
     }
 
-    updateBill(){
-
+    updateBill( bill: Bill ){
+        return this.http.put(`${environment.URI_API}/${bill._id}`, bill)
     }
 
-    deleteBill(){
-
+    deleteBill(_id: string){
+        return this.http.delete( `${environment.URI_API}/${_id}` )
     }
 }

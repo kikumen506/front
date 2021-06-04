@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Bill } from 'src/app/models/bill.model';
 import { BillService } from 'src/app/services/bill.service';
 
 @Component({
@@ -30,29 +31,29 @@ export class BillsComponent implements OnInit {
     );
   }
 
-  // deleteBill(id: string){
-  //   if(confirm('¿Seguro que quieres borrarlo?')){
-  //     this.userService.deleteUser(id).subscribe(
-  //       (res) => {
-  //         this.getUsers();
-  //     }, (err) => console.error(err))
-  //   };
+  deleteBill(id: string){
+    if(confirm('¿Seguro que quieres eliminar el registro?')){
+      this.billService.deleteBill( id ).subscribe(
+        (res) => {
+          this.getBills();
+      }, (err) => console.error(err))
+    };
     
-  // }
+  }
 
-  // editUser(user:User){
-  //   this.userService.selectedUser = user;
-  // }
+  updateBill(bill: Bill){
+    this.billService.selectedBill = bill;
+  }
 
   addBill(form: NgForm){
     if(form.value._id){
-      // this.billService.updateBill(form.value).subscribe(
-      //   (res) => {
-      //     this.getBills();
-      //     form.reset();
-      //   },
-      //   (err) => console.error(err)
-      // )
+      this.billService.updateBill(form.value).subscribe(
+        (res) => {
+          this.getBills();
+          form.reset();
+        },
+        (err) => console.error(err)
+      )
     } else {
       this.billService.createBill(form.value).subscribe(
         res => {
