@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BillService } from 'src/app/services/bill.service';
 
 @Component({
   selector: 'app-bills',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BillsComponent implements OnInit {
 
-  constructor() { }
+  constructor( private billService: BillService ) { }
 
   ngOnInit(): void {
+    this.billService.getBills().subscribe(
+      res => console.log( res ),
+      err => console.log( err )
+    );
   }
 
 }
